@@ -24,14 +24,7 @@ INSERT INTO panierArticles (quantite, panierId, articleId) VALUES (2, 1, 5);
 
 3. Ecrire la requête SQL qui permet de valider une commande pour qu'elle parte en salle.
 ```sql
-Étape 1 : Créer une nouvelle commande pour le client
-INSERT INTO commandes (montantTotal, clientId) SELECT SUM(articles.price * panierArticles.quantite), paniers.clientId FROM panierArticles INNER JOIN articles ON panierArticles.articleId = articles.id INNER JOIN paniers ON panierArticles.panierId = paniers.id WHERE paniers.id = 1 GROUP BY paniers.clientId;
 
-Étape 2 : Récupérer l'ID de la nouvelle commande
-SET @commandeId = LAST_INSERT_ID();
-
-Étape 3 : Insérer les articles du panier dans commandeArticles
-INSERT INTO commandeArticles (quantite, prix, commandeId, articleId) SELECT panierArticles.quantite, articles.price, @commandeId, panierArticles.articleId FROM panierArticles INNER JOIN articles ON panierArticles.articleId = articles.id WHERE panierArticles.panierId = 1;
 
 
 ```
