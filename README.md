@@ -17,13 +17,15 @@ SELECT * FROM articles;
 
 2. Ecrire la requête SQL qui permet d'ajouter un produit au panier de l'utilisateur.
 ```sql
-# Ecrivez la requête ici ...
+INSERT INTO panierArticles (quantite, panierId, articleId) VALUES (2, 1, 5);
+
 
 ```
 
 3. Ecrire la requête SQL qui permet de valider une commande pour qu'elle parte en salle.
 ```sql
-# Ecrivez la requête ici ...
+INSERT INTO commandes (montantTotal, clientId) SELECT SUM(articles.price * panierArticles.quantite), paniers.clientId FROM panierArticles INNER JOIN articles ON panierArticles.articleId = articles.id INNER JOIN paniers ON panierArticles.panierId = paniers.id WHERE paniers.id = 1 GROUP BY paniers.clientId;
+
 
 ```
 
@@ -36,7 +38,8 @@ VALUES ('DoubleBigMassi', 'Un burger double avec du fromage et des légumes', 10
 
 5. Ecrire la requête SQL qui permet de récupérer tout les produits d'une commande en fonction de l'id d'un utilisateur.
 ```sql
-# Ecrivez la requête ici ...
+SELECT articles.name, articles.description, commandeArticles.quantite, commandeArticles.prix FROM commandeArticles INNER JOIN articles ON commandeArticles.articleId = articles.id INNER JOIN commandes ON commandeArticles.commandeId = commandes.id WHERE commandes.clientId = 1;
+
 
 ```
 
