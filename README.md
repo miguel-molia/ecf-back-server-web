@@ -29,7 +29,8 @@ SELECT * FROM articles;
 
 4. Un nouveau burger est arrivé : le DoubleBigMassi. Ecrivez la requête SQL qui permet d'ajouter ce magnifique *burger* à la carte.
 ```sql
-# Ecrivez la requête ici ...
+INSERT INTO articles (name, description, price)
+VALUES ('DoubleBigMassi', 'Un burger double avec du fromage et des légumes', 10.99);
 
 ```
 
