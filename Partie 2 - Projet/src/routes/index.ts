@@ -1,0 +1,20 @@
+const express = require("express");
+const router = express.Router();
+
+const employeRoutes = require("./employe");
+const clientRoutes = require("./client");
+const articleRoutes = require("./article");
+const panierRoutes = require("./panier");
+const commandeRoutes = require("./commande");
+const commandeArticleRoutes = require("./commandeArticle");
+const panierArticleRoutes = require("./panierArticle");
+
+router.use("/employes", employeRoutes);
+router.use("/clients", clientRoutes);
+router.use("/articles", articleRoutes);
+router.use("/paniers", panierRoutes);
+router.use("/commandes", commandeRoutes);
+router.use("/commande-articles", commandeArticleRoutes);
+router.use("/panier-articles", panierArticleRoutes);
+
+module.exports = router;
