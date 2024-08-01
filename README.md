@@ -25,6 +25,7 @@ INSERT INTO panierArticles (quantite, panierId, articleId) VALUES (2, 1, 5);
 3. Ecrire la requête SQL qui permet de valider une commande pour qu'elle parte en salle.
 ```sql
 
+UPDATE commandes SET isValidated = TRUE WHERE id = 1;
 
 
 ```
