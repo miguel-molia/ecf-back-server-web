@@ -11,7 +11,7 @@ Faite un fork de ce repository git et codez votre projet dans le dossier *app*.
 
 1. Ecrire la requête SQL qui permet de récupérer tout les produits de la carte.
 ```sql
-# Ecrivez la requête ici ...
+SELECT * FROM articles;
 
 ```
 
