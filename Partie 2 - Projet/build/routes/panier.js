@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const panierController = require("../controllers/panierController");
-router.post("/", panierController.createPanier);
-router.get("/", panierController.getAllPaniers);
-router.get("/:id", panierController.getPanierById);
-router.put("/:id", panierController.updatePanier);
-router.delete("/:id", panierController.deletePanier);
+const authenticateToken = require('../middlewares/authMiddleware');
+const panierController = require('../controllers/panierController');
+router.get('/', authenticateToken, panierController.getAllPaniers);
+router.post('/', authenticateToken, panierController.createPanier);
+router.put('/:id', authenticateToken, panierController.updatePanier);
+router.delete('/:id', authenticateToken, panierController.deletePanier);
 module.exports = router;

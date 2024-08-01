@@ -1,15 +1,13 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const panierArticleController = require("../controllers/panierArticleController");
+const panierArticleController = require('../controllers/panierArticleController');
+const authenticateToken = require('../middleware/authMiddleware');
 
-router.post("/", panierArticleController.createPanierArticle);
 
-router.get("/", panierArticleController.getAllPanierArticles);
-
-router.get("/:id", panierArticleController.getPanierArticleById);
-
-router.put("/:id", panierArticleController.updatePanierArticle);
-
-router.delete("/:id", panierArticleController.deletePanierArticle);
+router.get('/', authenticateToken, panierArticleController.getAllPanierArticles);
+router.get('/:id', authenticateToken, panierArticleController.getPanierArticleById);
+router.post('/', authenticateToken, panierArticleController.createPanierArticle);
+router.put('/:id', authenticateToken, panierArticleController.updatePanierArticle);
+router.delete('/:id', authenticateToken, panierArticleController.deletePanierArticle);
 
 module.exports = router;

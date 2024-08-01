@@ -1,15 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const commandeController = require("../controllers/commandeController");
+const authenticateToken = require('../middlewares/authMiddleware');
+const commandeController = require('../controllers/commandeController');
 
-router.post("/", commandeController.createCommande);
 
-router.get("/", commandeController.getAllCommandes);
-
-router.get("/:id", commandeController.getCommandeById);
-
-router.put("/:id", commandeController.updateCommande);
-
-router.delete("/:id", commandeController.deleteCommande);
+router.get('/', authenticateToken, commandeController.getAllCommandes); 
+router.post('/', authenticateToken, commandeController.createCommande); 
+router.put('/:id', authenticateToken, commandeController.updateCommande); 
+router.delete('/:id', authenticateToken, commandeController.deleteCommande); 
 
 module.exports = router;

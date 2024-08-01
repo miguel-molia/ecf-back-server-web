@@ -1,13 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const express = require("express");
-const cors = require("cors");
-const routes = require("./routes");
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const app = express();
+const errorHandler = require('./middlewares/errorHandler');
+const routes = require('./routes/index');
 app.use(cors());
-app.use(express.json());
-app.use("/", routes);
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Serveur en écoute sur le port ${PORT}`);
-});
+app.use(bodyParser.json());
+app.use('/', routes);
+app.use(errorHandler);
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Serveur démarré sur le port ${port}`));
